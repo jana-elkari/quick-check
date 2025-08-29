@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Requirements Engineering Benchmarking Tool</title>
+      <style>
+        .checkbox-group {
+            margin-left: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 columns */
+            gap: 4px 20px; /* row gap / column gap */
+        }
+        .checkbox-group label {
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px; /* space between checkbox and text */
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin: 0; /* remove extra margin */
+        }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+
+    <div class="container">
+        <h2>RE Quick Check V2</h2>
+        <form method="POST" class="survey-form">
+
+            <label> In which country are you personally located?</label>
+            <select name="country" required>
+                <option value="Argentina">Argentina</option>
+                <option value="Australia">Australia</option>
+                <option value="Austria">Austria</option>
+                <option value="Canada">Canada</option>
+                <option value="Estonia">Estonia</option>
+                <option value="Germany">Germany</option>
+                <option value="Italy">Italy</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="Norway">Norway</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="Poland">Poland</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Spain">Spain</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Turkey">Turkey</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United States">United States</option>
+            </select>
+
+            <label for="team_size">How many people are involved in your project?</label>
+            <input type="number" name="team_size" id="team_size" min="1" required>
+
+            <label>Please select the main industrial sector of your project or the application domain of the
+software you build.</label>
+            <select name="industry" required>
+                <option value="Aerospace">Aerospace</option>
+                <option value="Agriculture">Agriculture</option>
+                <option value="Automotive">Automotive</option>
+                <option value="Avionics">Avionics</option>
+                <option value="Education">Education</option>
+                <option value="Energy">Energy</option>
+                <option value="Enterprise resource planning">Enterprise resource planning</option>
+                <option value="Finance">Finance</option>
+                <option value="Games engineering">Games engineering</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Human resources">Human resources</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Logistics">Logistics</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Other (please specify)">Other (please specify)</option>
+                <option value="Public sector">Public sector</option>    
+                <option value="Public transportation">Public transportation</option>
+                <option value="Railway">Railway</option>
+                <option value="Security">Security</option>
+                <option value="Telecommunication">Telecommunication</option>
+                <option value="e-Commerce">e-Commerce</option>
+                <option value="e-Government">e-Government</option>
+            </select>
+
+
+            <label>Does your project involve external partners?</label>
+            <select name="external_partners" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label> Is your project distributed? </label>
+            <select name="project_distribution" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label> Do you tend to work from home, on-site, or both? </label>
+            <select name="work" required>
+                <option value="Approximately half on-site and half from home">Approximately half on-site and half from home</option>
+                <option value="Almost completely on-site">Almost completely on-site </option>
+                <option value="Almost completely from home">Almost completely from home</option>
+                <option value="Mostly on-site">Mostly on-site</option>
+                <option value="Mostly from home">Mostly from home</option>
+            </select>
+
+            <label>How would you personally characterise the way your project works?</label>
+            <select name="project_method" required>
+                <option value="Agile">Agile</option>
+                <option value="Plan-driven">Plan-driven</option>
+                <option value="Rather plan-driven">Rather plan-driven</option>
+                <option value="Rather agile">Rather agile</option>
+                <option value="Hybrid">Hybrid</option>
+            </select>
+
+            <label>What is the main role you occupy in your project?</label>
+<select name="role" required>
+    <option value="Developer">Developer</option>
+    <option value="Project Lead / Project Manager">Project Lead / Project Manager</option>
+    <option value="Product Owner">Product Owner</option>
+    <option value="Business Analyst">Business Analyst</option>
+    <option value="Requirements Engineer">Requirements Engineer</option>
+    <option value="Scrum Master">Scrum Master</option>
+    <option value="Architect">Architect</option>
+    <option value="Product Manager">Product Manager</option>
+    <option value="Marketing">Marketing</option>
+    <option value="Customer">Customer</option>
+    <option value="Test Manager / Tester">Test Manager / Tester</option>
+    <option value="Other (please specify)">Other (please specify)</option>
+</select>
+
+            <label>How would you rate the relationship between your project’s team and its customer? (1-5):</label>
+            <select name="team_customer_relationship" required>
+                <option value="1">1 - Very Bad</option>
+                <option value="2">2 - Bad</option>
+                <option value="3">3 - Neutral</option>
+                <option value="4">4 - Good</option>
+                <option value="5">5 - Very Good</option>
+            </select>
+
+    
+
+            <label>How would you rate the quality of communication inside your team?</label>
+            <select name="team_communication" required>
+                <option value="1">1 - Very Bad</option>
+                <option value="2">2 - Bad</option>
+                <option value="3">3 - Neutral</option>
+                <option value="4">4 - Good</option>
+                <option value="5">5 - Very Good</option>
+            </select>
+
+<label>How often do members of your team meet, informally by chance meeting or in announced meetings?</label>
+            <select name="meeting_frequency" required>
+                <option value="Almost daily">Almost daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Bi-weekly">Bi-weekly</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Other (Please specify)">Other (Please specify)</option>
+            </select>
+
+            <label>How often is user feedback provided?</label>
+            <select name="user_feedback_frequency" required>
+                <option value="Almost daily">Almost daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Bi-weekly">Bi-weekly</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Other (Please specify)">Other (Please specify)</option>
+            </select>
+
+
+
+
+
+             <label>How are the requirements elicited in your project?</label>
+            <select name="requirements_elicitation" required>
+                <option value="Agile: we elicit and/or refine requirements in several iterations.">
+                    Agile: we elicit and/or refine requirements in several iterations.
+                </option>
+                <option value="Waterfall: we elicit and/or refine requirements in a dedicated project phase.">
+                    Waterfall: we elicit and/or refine requirements in a dedicated project phase.
+                </option>
+                <option value="I don't know">I don't know</option>
+                <option value="Other (please specify)">Other (please specify)</option>
+            </select>
+
+            <label><b>Which techniques do you use for requirements elicitation? (Select all that apply)<b></label>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="elicitation_techniques" value="Interviews"> Interviews</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="Analysis of existing documents"> Analysis of existing documents</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="Risk analyses"> Risk analyses</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="Prototyping"> Prototyping</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="Workshops and focus groups"> Workshops and focus groups</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="(Requirements) Reuse databases and guidelines">(Requirements) Reuse databases and guidelines</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="Design Thinking"> Design Thinking</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="External experts"> External experts</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="Observations"> Observations</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="Usage data analysis (e.g. event logs)"> Usage data analysis (e.g. event logs)</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="Lean Startup"> Lean Startup</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="Experimentation with users"> Experimentation with users</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="Other"> Other</label><br>
+  <label><input type="checkbox" name="elicitation_techniques" value="I don't know"> I don't know</label>
+</div>
+
+ <label><b>If you are in a situation where you lack information and have to make an assumption to proceed in your project, what do you typically do?</b></label>
+            <select name="assumption" required>
+                <option value="Make a reasonable assumption myself and proceed">Make a reasonable assumption myself and proceed</option>
+                <option value="Ask the customer/end user/or both what should be assumed before proceeding">Ask the customer, end user, or both what should be assumed before proceeding</option>
+                <option value="I do not know">I do not know</option>
+                <option value="Does not apply">Does not apply</option>
+            </select>
+
+       <label><b>How do you document requirements?</b> (Select all that apply)</label><br>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="requirements_documentation" value="Activity diagrams"> Activity diagrams</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Class diagrams"> Class diagrams</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Sequence diagrams"> Sequence diagrams</label>
+  <label><input type="checkbox" name="requirements_documentation" value="State machines"> State machines</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Structured lists of requirements"> Structured lists of requirements</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Use case diagrams"> Use case diagrams</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Acceptance Criteria (Given-When-Then)"> Acceptance Criteria (Given-When-Then)</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Prototypes / user screens"> Prototypes / user screens</label>
+  <label><input type="checkbox" name="requirements_documentation" value="User stories"> User stories</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Informal sketches / wireframes / mind maps"> Informal sketches / wireframes / mind maps</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Goal models"> Goal models</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Business process models"> Business process models</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Natural language / plain text"> Natural language / plain text</label>
+  <label><input type="checkbox" name="requirements_documentation" value="I don't know"> I don't know</label>
+  <label><input type="checkbox" name="requirements_documentation" value="Other"> Other</label>
+</div>
+ <label><b> Which information do you explicitly document when dealing with requirements?<b></label>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="explicit_distinction" value="Architectural constraints"> Architectural constraints</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Development process aspects"> Development process aspects</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Formal properties of the system"> Formal properties of the system</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Functional properties of the system"> Functional properties of the system</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Goals"> Goals</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Quality properties of the system"> Quality properties of the system</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Rules (e.g., business rules)"> Rules (e.g., business rules)</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Stakeholders"> Stakeholders</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="System behaviour"> System behaviour</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Technical interfaces"> Technical interfaces</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Usage scenarios"> Usage scenarios</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="User interface(s)"> User interface(s)</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Internal or external constraints (e.g. laws)"> Internal or external constraints (e.g. laws)</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="Acceptance criteria"> Acceptance criteria</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="I don't know"> I don't know</label><br>
+  <label><input type="checkbox" name="explicit_distinction" value="None of the above"> None of the above</label>
+</div>
+
+
+
+<label><b>Which classes of non-functional requirements do you explicitly consider in your requirements documentation? (Select all that apply)</b></label>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="non_functional_requirements" value="Compatibility (e.g., co-existence, interoperability)"> Compatibility (e.g., co-existence, interoperability)</label>
+  <label><input type="checkbox" name="non_functional_requirements" value="Maintainability (e.g., analysability, modularity, modifiability, reusability, testability)"> Maintainability (e.g., analysability, modularity, modifiability, reusability, testability)</label>
+  <label><input type="checkbox" name="non_functional_requirements" value="Performance efficiency (e.g., time behaviour, resource utilisation, capacity)"> Performance efficiency (e.g., time behaviour, resource utilisation, capacity)</label>
+  <label><input type="checkbox" name="non_functional_requirements" value="Portability (e.g., adaptability, installability, replaceability)"> Portability (e.g., adaptability, installability, replaceability)</label>
+  <label><input type="checkbox" name="non_functional_requirements" value="Reliability (e.g., availability, fault tolerance, maturity, recoverability)"> Reliability (e.g., availability, fault tolerance, maturity, recoverability)</label>
+  <label><input type="checkbox" name="non_functional_requirements" value="Safety (e.g., freedom of risk for health or disaster)"> Safety (e.g., freedom of risk for health or disaster)</label>
+  <label><input type="checkbox" name="non_functional_requirements" value="Security (e.g., accountability, authenticity, confidentiality, integrity, non-repudiation)"> Security (e.g., accountability, authenticity, confidentiality, integrity, non-repudiation)</label>
+  <label><input type="checkbox" name="non_functional_requirements" value="Usability (e.g., accessibility, appropriateness recognizability, learnability, operability, user error protection, UI aesthetics)"> Usability (e.g., accessibility, appropriateness recognizability, learnability, operability, user error protection, UI aesthetics)</label>
+  <label><input type="checkbox" name="non_functional_requirements" value="External or internal constraints (e.g., laws)"> External or internal constraints (e.g., laws)</label>
+  <label><input type="checkbox" name="non_functional_requirements" value="Other"> Other</label>
+  <label><input type="checkbox" name="non_functional_requirements" value="I don't know"> I don't know</label>
+</div>
+
+<label>Have you ever failed to document one or more requirements?</label>
+            <select name="failed_documentation" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="I do not document requirements.">I do not document requirements.</option>
+
+                
+            </select>
+            
+           
+
+<label><b>Check as many reasons for failing to document requirements that have applied in at least one circumstance.</b></label><br>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="no_documentation_reasons" value="I didn't need to document it. I know it."> I didn't need to document it. I know it.</label>
+  <label><input type="checkbox" name="no_documentation_reasons" value="I knew colleagues would complain or hate or ridicule me."> I knew colleagues would complain or hate or ridicule me.</label>
+  <label><input type="checkbox" name="no_documentation_reasons" value="My project lead told me not to bother."> My project lead told me not to bother.</label>
+  <label><input type="checkbox" name="no_documentation_reasons" value="My project lead told me not to spend any time on documentation."> My project lead told me not to spend any time on documentation.</label>
+  <label><input type="checkbox" name="no_documentation_reasons" value="My project lead told me not to waste any (more) time on documentation."> My project lead told me not to waste any (more) time on documentation.</label>
+  <label><input type="checkbox" name="no_documentation_reasons" value="My colleagues told me not to bother."> My colleagues told me not to bother.</label>
+  <label><input type="checkbox" name="no_documentation_reasons" value="My colleagues told me not to spend any time on documentation."> My colleagues told me not to spend any time on documentation.</label>
+  <label><input type="checkbox" name="no_documentation_reasons" value="My colleagues told me not to waste any (more) time on documentation."> My colleagues told me not to waste any (more) time on documentation.</label>
+  <label><input type="checkbox" name="no_documentation_reasons" value="Other"> Other</label>
+</div>
+
+
+            <label><b>Please select the most critical problems that have occurred in your projects.</b></label>
+            <select name="common_problem" required>
+                <option value="Communication flaws within the project team">Communication flaws within the project team</option>
+                <option value="Technically unfeasible requirements">Technically unfeasible requirements</option>
+                <option value="Insufficient support by project lead">Insufficient support by project lead</option>
+                <option value="Internal or external constraints are not considered">Internal or external constraints are not considered</option>
+                <option value="Incomplete or hidden requirements">Incomplete or hidden requirements</option>
+                <option value="Weak knowledge about customer's application domain">Weak knowledge about customer's application domain</option>
+                <option value="Gold plating (implementation of features without clear value)">Gold plating (implementation of features without clear value)</option>
+                <option value="Weak access to customer needs and / or (internal) stakeholders">Weak access to customer needs and / or (internal) stakeholders</option>
+                <option value="Targets are moving (changing goals, business priorities)">Targets are moving (changing goals, business priorities)</option>
+                <option value="We do not have enough time to carry out tasks">We do not have enough time to carry out tasks</option>
+                <option value="Inconsistent requirements">Inconsistent requirements</option>
+                <option value="Changes in requirements not communicated">Changes in requirements not communicated</option>
+                <option value="Communication flaws between the project and the customers">Communication flaws between the project and the customers</option>
+                <option value="Underspecified requirements that are too abstract">Underspecified requirements that are too abstract</option>
+                <option value="No use of standard format for documenting requirements">No use of standard format for documenting requirements</option>
+                <option value="Problems with terminology">Problems with terminology</option>
+            </select>
+
+            <label>Top 2 Problem (most critical)</label>
+<select name="top2" required>
+    <option value="Communication flaws within the project team">Communication flaws within the project team</option>
+    <option value="Technically unfeasible requirements">Technically unfeasible requirements</option>
+    <option value="Insufficient support by project lead">Insufficient support by project lead</option>
+    <option value="Internal or external constraints are not considered">Internal or external constraints are not considered</option>
+    <option value="Incomplete or hidden requirements">Incomplete or hidden requirements</option>
+    <option value="Weak knowledge about customer's application domain">Weak knowledge about customer's application domain</option>
+    <option value="Gold plating (implementation of features without clear value)">Gold plating (implementation of features without clear value)</option>
+    <option value="Weak access to customer needs and / or (internal) stakeholders">Weak access to customer needs and / or (internal) stakeholders</option>
+    <option value="Targets are moving (changing goals, business priorities)">Targets are moving (changing goals, business priorities)</option>
+    <option value="We do not have enough time to carry out tasks">We do not have enough time to carry out tasks</option>
+    <option value="Inconsistent requirements">Inconsistent requirements</option>
+    <option value="Changes in requirements not communicated">Changes in requirements not communicated</option>
+    <option value="Communication flaws between the project and the customers">Communication flaws between the project and the customers</option>
+    <option value="Underspecified requirements that are too abstract">Underspecified requirements that are too abstract</option>
+    <option value="No use of standard format for documenting requirements">No use of standard format for documenting requirements</option>
+    <option value="Problems with terminology">Problems with terminology</option>
+</select>
+
+    <label>Top 3 Problem (most critical)</label>
+<select name="top3" required>
+    <option value="Communication flaws within the project team">Communication flaws within the project team</option>
+    <option value="Technically unfeasible requirements">Technically unfeasible requirements</option>
+    <option value="Insufficient support by project lead">Insufficient support by project lead</option>
+    <option value="Internal or external constraints are not considered">Internal or external constraints are not considered</option>
+    <option value="Incomplete or hidden requirements">Incomplete or hidden requirements</option>
+    <option value="Weak knowledge about customer's application domain">Weak knowledge about customer's application domain</option>
+    <option value="Gold plating (implementation of features without clear value)">Gold plating (implementation of features without clear value)</option>
+    <option value="Weak access to customer needs and / or (internal) stakeholders">Weak access to customer needs and / or (internal) stakeholders</option>
+    <option value="Targets are moving (changing goals, business priorities)">Targets are moving (changing goals, business priorities)</option>
+    <option value="We do not have enough time to carry out tasks">We do not have enough time to carry out tasks</option>
+    <option value="Inconsistent requirements">Inconsistent requirements</option>
+    <option value="Changes in requirements not communicated">Changes in requirements not communicated</option>
+    <option value="Communication flaws between the project and the customers">Communication flaws between the project and the customers</option>
+    <option value="Underspecified requirements that are too abstract">Underspecified requirements that are too abstract</option>
+    <option value="No use of standard format for documenting requirements">No use of standard format for documenting requirements</option>
+    <option value="Problems with terminology">Problems with terminology</option>
+</select>
+
+  <label>Top 4 Problem (most critical)</label>
+<select name="top4" required>
+    <option value="Communication flaws within the project team">Communication flaws within the project team</option>
+    <option value="Technically unfeasible requirements">Technically unfeasible requirements</option>
+    <option value="Insufficient support by project lead">Insufficient support by project lead</option>
+    <option value="Internal or external constraints are not considered">Internal or external constraints are not considered</option>
+    <option value="Incomplete or hidden requirements">Incomplete or hidden requirements</option>
+    <option value="Weak knowledge about customer's application domain">Weak knowledge about customer's application domain</option>
+    <option value="Gold plating (implementation of features without clear value)">Gold plating (implementation of features without clear value)</option>
+    <option value="Weak access to customer needs and / or (internal) stakeholders">Weak access to customer needs and / or (internal) stakeholders</option>
+    <option value="Targets are moving (changing goals, business priorities)">Targets are moving (changing goals, business priorities)</option>
+    <option value="We do not have enough time to carry out tasks">We do not have enough time to carry out tasks</option>
+    <option value="Inconsistent requirements">Inconsistent requirements</option>
+    <option value="Changes in requirements not communicated">Changes in requirements not communicated</option>
+    <option value="Communication flaws between the project and the customers">Communication flaws between the project and the customers</option>
+    <option value="Underspecified requirements that are too abstract">Underspecified requirements that are too abstract</option>
+    <option value="No use of standard format for documenting requirements">No use of standard format for documenting requirements</option>
+    <option value="Problems with terminology">Problems with terminology</option>
+</select>
+
+
+  <label>Top 5 Problem (most critical)</label>
+<select name="top5" required>
+    <option value="Communication flaws within the project team">Communication flaws within the project team</option>
+    <option value="Technically unfeasible requirements">Technically unfeasible requirements</option>
+    <option value="Insufficient support by project lead">Insufficient support by project lead</option>
+    <option value="Internal or external constraints are not considered">Internal or external constraints are not considered</option>
+    <option value="Incomplete or hidden requirements">Incomplete or hidden requirements</option>
+    <option value="Weak knowledge about customer's application domain">Weak knowledge about customer's application domain</option>
+    <option value="Gold plating (implementation of features without clear value)">Gold plating (implementation of features without clear value)</option>
+    <option value="Weak access to customer needs and / or (internal) stakeholders">Weak access to customer needs and / or (internal) stakeholders</option>
+    <option value="Targets are moving (changing goals, business priorities)">Targets are moving (changing goals, business priorities)</option>
+    <option value="We do not have enough time to carry out tasks">We do not have enough time to carry out tasks</option>
+    <option value="Inconsistent requirements">Inconsistent requirements</option>
+    <option value="Changes in requirements not communicated">Changes in requirements not communicated</option>
+    <option value="Communication flaws between the project and the customers">Communication flaws between the project and the customers</option>
+    <option value="Underspecified requirements that are too abstract">Underspecified requirements that are too abstract</option>
+    <option value="No use of standard format for documenting requirements">No use of standard format for documenting requirements</option>
+    <option value="Problems with terminology">Problems with terminology</option>
+</select>
+
+
+            <button type="submit">Submit & Get Recommendation</button>
+        </form>
+</body>
+</html>
